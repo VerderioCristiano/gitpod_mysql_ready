@@ -4,15 +4,15 @@ import mysql.connector
 
 mydb = mysql.connector.connect(
   host="localhost",
-  user="yourusername",
-  password="yourpassword",
-  database="mydatabase"
+  user="root",
+  password="",
+  database="Animali"
 )
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT * FROM customers")
+mycursor.execute("SELECT * FROM mammiferi")
 
-myresult = mycursor.fetchone()
+myresult = mycursor.fetchall()
 
 print(myresult)
