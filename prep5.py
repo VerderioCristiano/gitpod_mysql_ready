@@ -35,19 +35,19 @@ def add_mammifero():
     data = request.get_json()  # Recupera i dati JSON inviati dal client
 
     # Verifica che tutti i campi necessari siano presenti
-    if not all(key in data for key in ('Nome_Proprio', 'Razza', 'Peso', 'Eta')):
+    if not all(key in data for key in ('nome_proprio', 'razza',  'peso', 'eta')):
         return jsonify({"error": "Dati mancanti"}), 400
 
-    nome = data['Nome_Proprio']
-    razza = data['Razza']
-    peso = data['Peso']
-    eta = data['Eta']
+    nome = data['nome_proprio']
+    razza = data['razza']
+    peso = data['peso']
+    eta = data['eta']
 
     # Connessione al database e inserimento dei dati
     mydb = connect_to_db()
     mycursor = mydb.cursor()
 
-    sql = "INSERT INTO mammiferi (Nome_Proprio, Razza, Peso, Eta) VALUES (%s, %s, %s, %s)"
+    sql = "INSERT INTO mammiferi (nome_proprio, razza, peso, eta) VALUES (%s, %s, %s, %s)"
     values = (nome, razza, peso, eta)
     mycursor.execute(sql, values)
     mydb.commit()
@@ -62,19 +62,19 @@ def update_mammifero(id):
     data = request.get_json()
 
     # Verifica che tutti i campi necessari siano presenti
-    if not all(key in data for key in ('Nome_Proprio', 'Razza', 'Peso', 'Eta')):
+    if not all(key in data for key in ('nome_proprio', 'razza',  'peso', 'eta')):
         return jsonify({"error": "Dati mancanti"}), 400
 
-    nome = data['Nome_Proprio']
-    razza = data['Razza']
-    peso = data['Peso']
-    eta = data['Eta']
+    nome = data['nome_proprio']
+    razza = data['razza']
+    peso = data[ 'peso']
+    eta = data['eta']
 
     # Connessione al database e aggiornamento dei dati
     mydb = connect_to_db()
     mycursor = mydb.cursor()
 
-    sql = "UPDATE mammiferi SET Nome_Proprio = %s, Razza = %s, Peso = %s, Eta = %s WHERE Id = %s"
+    sql = "UPDATE mammiferi SET nome_proprio = %s, razza = %s, peso = %s, eta = %s WHERE Id = %s"
     values = (nome, razza, peso, eta, id)
     mycursor.execute(sql, values)
     mydb.commit()
