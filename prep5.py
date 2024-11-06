@@ -49,6 +49,7 @@ def add_mammifero():
 
     sql = "INSERT INTO mammiferi (nome_proprio, razza, peso, eta) VALUES (%s, %s, %s, %s)"
     values = (nome, razza, peso, eta)
+    
     mycursor.execute(sql, values)
     mydb.commit()
 
@@ -111,5 +112,5 @@ def delete_mammifero(id):
     return jsonify({"message": "Animale eliminato con successo!"}), 200
 
 
-if __name__ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
